@@ -16,3 +16,6 @@ class Contato(models.Model):
     descricao = models.TextField(blank=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
 
+    def __str__(self):
+        return self.nome
+
