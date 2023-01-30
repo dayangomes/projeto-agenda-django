@@ -18,6 +18,7 @@ class Contato(models.Model):
     data_criacao = models.DateTimeField(default=timezone.now)
     descricao = models.TextField(blank=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
+    mostrar = models.BooleanField(default=True)
     # on_delete=models.DO_NOTHING, faz com que, quando a categoria for apagada, seus Contatos ligados não façam nada.
 
     def __str__(self): 
