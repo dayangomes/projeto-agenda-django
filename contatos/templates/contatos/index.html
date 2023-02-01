@@ -6,6 +6,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Nome</th>
             <th>Sobrenome</th>
             <th>Telefone</th>
@@ -14,16 +15,17 @@
     </thead>
     <tbody>
         {% for contato in contatos %}
-            {% if contato.mostrar %}
-                <tr>
-                    <td>
-                        <a href="{% url 'ver_contato' contato_id=contato.id %}">{{ contato.nome }}</a>
-                    </td>
-                    <td>{{ contato.sobrenome }}</td>
-                    <td>{{ contato.telefone }}</td>
-                    <td>{{ contato.categoria }}</td>
+            {% comment %} {% if contato.mostrar %} Feito de outra forma na views {% endcomment %}
+            <tr>
+                <td>{{ contato.id }}</td>
+                <td>
+                    <a href="{% url 'ver_contato' contato_id=contato.id %}">{{ contato.nome }}</a>
+                </td>
+                <td>{{ contato.sobrenome }}</td>
+                <td>{{ contato.telefone }}</td>
+                <td>{{ contato.categoria }}</td>
                 </tr>
-            {% endif %}
+            {% comment %} {% endif %} {% endcomment %}
         {% endfor %}
     </tbody>
 </table>

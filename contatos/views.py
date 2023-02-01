@@ -1,17 +1,19 @@
 from django.shortcuts import render, get_object_or_404
-# from django.http import Http404
+from django.http import Http404
 from django.core.paginator import Paginator
 from .models import Contato
 
 def index(request):
-    contatos = Contato.objects.all()
+    contatos = Contato.objects.order_by('-id').filter(
+        mostrar=True # mostra apenas os contatos que estão marcados como mostrar=True
+    ) # Posso colocar mais de um filtro, por exemplo: .filter(mostrar=True, nome='João')
+    # ordena os contatos por id em ordem decrescente
+    # contatos = Contato.objects.all()
 
     paginator = Paginator(contatos, 5) # Show 5 contacts per page.
     page = request.GET.get('p') # p é o nome do parâmetro que será passado na url
     contatos = paginator.get_page(page) # contatos é o nome da variável que será passada para o template
-
-
-
+    
     return render(request, 'contatos/index.html', {
         'contatos': contatos
     })
@@ -20,9 +22,33 @@ def index(request):
 def ver_contato(request, contato_id):
     # contato = Contato.objects.get(id=contato_id)
     contato = get_object_or_404(Contato, id=contato_id) # pega o objeto ou levanta um 404
+
+    """ Corrige o erro de quando o contato estiver oculto, ele ser mostrado sendo 
+    acessado id no endereço """
+    if not contato.mostrar: 
+        raise Http404()
+
     return render(request, 'contatos/ver_contato.html', {
         'contato': contato
     })
+
+def busca(request):
+    termo = request.GET.get('termo') # pega o termo da url
+    print(termo)
+    
+    contatos = Contato.objects.order_by('-id').filter(
+        mostrar=True # mostra apenas os contatos que estão marcados como mostrar=True
+    )
+
+
+    paginator = Paginator(contatos, 5) # Show 5 contacts per page.
+    page = request.GET.get('p') # p é o nome do parâmetro que será passado na url
+    contatos = paginator.get_page(page) # contatos é o nome da variável que será passada para o template
+
+    return render(request, 'contatos/index.html', {
+        'contatos': contatos
+    })
+
 
 # uma forma de levantar erros 404
 # def ver_contato(request, contato_id):
