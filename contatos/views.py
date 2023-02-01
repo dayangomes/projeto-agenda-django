@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from django.core.paginator import Paginator
 from .models import Contato
+from django.db.models import Q, Value # importa o Q para fazer buscas mais complexas
+from django.db.models.functions import Concat # importa o Concat para concatenar os campos
 
 def index(request):
     contatos = Contato.objects.order_by('-id').filter(
@@ -35,8 +37,9 @@ def ver_contato(request, contato_id):
 def busca(request):
     termo = request.GET.get('termo') # pega o termo da url
     print(termo)
-    
+
     contatos = Contato.objects.order_by('-id').filter(
+        Q(nome__icontains=termo) | Q(sobrenome__icontains=termo), # Pega pelo nome, sem precisar ser exatamente igual
         mostrar=True # mostra apenas os contatos que estão marcados como mostrar=True
     )
 
@@ -45,7 +48,7 @@ def busca(request):
     page = request.GET.get('p') # p é o nome do parâmetro que será passado na url
     contatos = paginator.get_page(page) # contatos é o nome da variável que será passada para o template
 
-    return render(request, 'contatos/index.html', {
+    return render(request, 'contatos/busca.html', {
         'contatos': contatos
     })
 
