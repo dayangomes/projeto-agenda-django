@@ -29,6 +29,11 @@
         {% endfor %}
     </tbody>
 </table>
+
+{% if not contatos %}
+    {% block notBusca %}{% endblock notBusca %}
+{% endif %}
+
 {% comment %} Adicionando páginação {% endcomment %}
 <nav aria-label="Page navigation example">
     <ul class="pagination">
