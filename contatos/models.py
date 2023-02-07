@@ -19,6 +19,7 @@ class Contato(models.Model):
     descricao = models.TextField(blank=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING)
     mostrar = models.BooleanField(default=True)
+    foto = models.ImageField(blank=True, upload_to='fotos/%Y/%m/%d/')
     # on_delete=models.DO_NOTHING, faz com que, quando a categoria for apagada, seus Contatos ligados não façam nada.
 
     def __str__(self): 
