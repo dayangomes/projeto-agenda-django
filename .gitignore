@@ -1,2 +1,4 @@
 template_agenda/
 venv/
+
+__pycache__/
