@@ -125,3 +125,14 @@ STATICFILES_DIRS = [
 # Configuração para o upload de arquivos
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'
+
+# Configuração para as mensagens
+from django.contrib.messages import constants
+
+MESSAGE_TAGS = { # Configuração para as mensagens
+    constants.ERROR: 'alert-danger',
+    constants.WARNING: 'alert-warning',
+    constants.DEBUG: 'alert-info',
+    constants.SUCCESS: 'alert-success',
+    constants.INFO: 'alert-info',
+}

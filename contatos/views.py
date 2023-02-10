@@ -6,9 +6,11 @@ from django.db.models import Q, Value  # importa o Q para fazer buscas mais comp
 from django.db.models.functions import (
     Concat,
 )  # importa o Concat para concatenar os campos
-
+from django.contrib import messages
 
 def index(request):
+    messages.add_message(request, messages.INFO, "Olá, seja bem vindo!")
+
     contatos = Contato.objects.order_by("-id").filter(
         mostrar=True  # mostra apenas os contatos que estão marcados como mostrar=True
     )  # Posso colocar mais de um filtro, por exemplo: .filter(mostrar=True, nome='João')
@@ -46,7 +48,7 @@ def ver_contato(request, contato_id):
 def busca(request):
     termo = request.GET.get("termo")  # pega o termo da url
 
-    if termo is None:
+    if termo is None or not termo:
         raise Http404()
 
     campos = Concat("nome", Value(" "), "sobrenome")
