@@ -1,4 +1,9 @@
-template_agenda/
+# Ambiente virtual
 venv/
 
+# Template
+template_agenda/
+
+# Cache
+__pycache__
 __pycache__/
