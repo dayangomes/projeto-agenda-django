@@ -1,13 +1,7 @@
 {% extends 'contatos/index.html' %}
 
+{%block titulo%}{{ request.GET.termo }} Busca | {%endblock%}
+
 {% block notBusca %}
     <h5 align='center'>Pessoa não encontrada</h5>
 {% endblock notBusca %}
-
-{% block teste %}
-    <center>
-        <br><br>
-        <h1>Teste</h1>
-        <p>Tá funcionando</p>
-    </center>
-{% endblock teste %}
