@@ -1,18 +1,34 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
+from django.contrib import messages, auth
 from django.core.validators import validate_email # Importa a função de validação de email
 from django.contrib.auth.models import User # Importa o model User
+from django.contrib.auth.decorators import login_required
 
 def login(request):
-    return render(request, 'accounts/login.html')
+    if request.method != 'POST':
+        return render(request, 'accounts/login.html')
+
+    usuario = request.POST.get('usuario')
+    senha = request.POST.get('senha')
+
+    user = auth.authenticate(request, username=usuario, password=senha)
+
+    if not user:
+        messages.error(request, 'Usuário ou senha inválidos!')
+        return render(request, 'accounts/login.html')
+    else:
+        auth.login(request, user)
+        messages.success(request, 'Login realizado com sucesso!')
+        return redirect('dashboard')
 
 
 def logout(request):
-    return render(request, 'accounts/logout.html')
+    auth.logout(request)
+    return redirect('login')
 
 
 def cadastro(request):
-    if request.method != 'POST':
+    if request.method != 'POST': 
         return render(request, 'accounts/cadastro.html')
 
     nome = request.POST.get('nome')
@@ -58,7 +74,7 @@ def cadastro(request):
         messages.error(request, 'Email já existe!')
         return render(request, 'accounts/cadastro.html')
 
-    messages.success(request, 'Registrado com sucesso! Faça seu login')
+    messages.success(request, 'Registrado com sucesso! Faça seu login.')
     user = User.objects.create_user(
         username=usuario, 
         email=email, 
@@ -69,6 +85,6 @@ def cadastro(request):
     user.save()
     return redirect('login')
 
-
+@login_required(redirect_field_name='login')
 def dashboard(request):
     return render(request, 'accounts/dashboard.html')
