@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
-from django.contrib import messages, auth
+from django.shortcuts import render, redirect # são responsáveis por renderizar as páginas e redirecionar
+from django.contrib import messages, auth # são responsáveis por exibir as mensagens e fazer a autenticação
 from django.core.validators import validate_email # Importa a função de validação de email
 from django.contrib.auth.models import User # Importa o model User
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required # Importa o decorator de login
+from .models import FormContato
 
 def login(request):
     if request.method != 'POST':
@@ -87,4 +88,11 @@ def cadastro(request):
 
 @login_required(redirect_field_name='login')
 def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+    # O Django trabalha com o modelo Model, View e Template (MVT) que é uma variação do MVC, onde o Controller é substituído pelo Template.
+    # O Template é responsável por fazer a comunicação entre o Model e a View.
+
+    # form = FormContato(request.POST or None)
+    form = FormContato()
+    return render(request, 'accounts/dashboard.html', {
+        'form': form
+    })
