@@ -1,0 +1,27 @@
+.container-buttom {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 30px;
+}
+
+.logout-button {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+    padding: 0.275rem 0.55rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 1rem;
+    transition: all 0.15s ease-in-out;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 3%;
+    text-align: center;
+}
+
+.logout-button:hover {
+    color: #fff;
+    background-color: #c82333;
+    border-color: #bd2130;
+    text-decoration: none;
+}

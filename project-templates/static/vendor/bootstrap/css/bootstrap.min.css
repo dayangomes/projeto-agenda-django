@@ -4764,8 +4764,8 @@ input[type=submit].btn-block {
     }
 
     .navbar-expand-lg .navbar-nav .nav-link {
-        padding-right: .5rem;
-        padding-left: .5rem
+        padding-right: 2.5rem;
+        padding-left: 2.5rem
     }
 
     .navbar-expand-lg>.container,
@@ -4931,7 +4931,8 @@ input[type=submit].btn-block {
 }
 
 .navbar-dark .navbar-brand {
-    color: #fff
+    color: #fff;
+    /* color: green; */
 }
 
 .navbar-dark .navbar-brand:focus,
