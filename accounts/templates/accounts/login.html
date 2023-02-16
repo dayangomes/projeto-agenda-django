@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% block nav_login_active %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'dashboard' %}">Login</a>
+    </li>
+{% endblock %}
+
 {%block titulo%}Login | {%endblock%}
 
 {% block conteudo %}

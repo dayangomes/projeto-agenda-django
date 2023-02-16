@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -11,8 +10,50 @@
 </head>
 
 <body>
-
-    {% include 'partial/_navbar.html' %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">Agenda</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Botao dashboard -->
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    {% block nav_home_active %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    {% endblock %}
+                    {% block nav_dashboard_active %}
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+                    </li>
+                    {% endif %}
+                    {% endblock %}
+                    {% block nav_cadastro_active %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cadastro' %}">Cadastro</a>
+                    </li>
+                    {% endblock %}
+                    {% block nav_login_active %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    {% endblock %}
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <div class="container-buttom">
+                            <button type="submit" class="logout-button">Logout</button>
+                        </div>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Nav Bar -->
 
     <!-- Page Content -->
     <div class="container">
@@ -35,6 +76,8 @@
             </div>
         </div>
     </div>
+
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.slim.min.js' %}"></script>

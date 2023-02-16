@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
+{% block nav_home_active %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index' %}">Home
+            <span class="sr-only">(current)</span>
+        </a>
+    </li>
+{% endblock %}
+
+
 {% block conteudo %}
 <h1 class="mt-5">Minha agenda</h1>
 
@@ -51,5 +60,4 @@
     </ul>
 </nav>
 {% comment %} Teste {% endcomment %}
-{% block teste %}{% endblock teste %}
 {% endblock  %}
