@@ -90,9 +90,41 @@ def cadastro(request):
 def dashboard(request):
     # O Django trabalha com o modelo Model, View e Template (MVT) que é uma variação do MVC, onde o Controller é substituído pelo Template.
     # O Template é responsável por fazer a comunicação entre o Model e a View.
+    if request.method != 'POST':
+        form = FormContato()
+        return render(request, 'accounts/dashboard.html', {
+            'form': form
+        })
 
-    # form = FormContato(request.POST or None)
-    form = FormContato()
-    return render(request, 'accounts/dashboard.html', {
-        'form': form
-    })
+    form = FormContato(request.POST, request.FILES)
+
+    if not form.is_valid():
+        messages.error(request, 'Erro ao enviar formulário!')
+        form = FormContato(request.POST, request.FILES)
+        return render(request, 'accounts/dashboard.html', {
+            'form': form
+        })
+        
+    email = request.POST.get('email')
+    descricao = request.POST.get('descricao')
+
+    try: 
+        validate_email(email)
+    except:
+        messages.error(request, 'Email inválido!')
+        form = FormContato(request.POST, request.FILES)
+        return render(request, 'accounts/dashboard.html', {
+            'form': form
+        })
+
+
+    if len(descricao) < 5:
+        messages.error(request, 'Descrição precisa ter no mínimo 5 caracteres!')
+        form = FormContato(request.POST, request.FILES)
+        return render(request, 'accounts/dashboard.html', {
+            'form': form
+        })
+    
+    form.save()
+    messages.success(request, f'Contato {request.POST.get("nome")} salvo com sucesso!')
+    return redirect('dashboard')
