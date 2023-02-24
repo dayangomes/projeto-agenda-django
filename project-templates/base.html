@@ -45,7 +45,8 @@
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <div class="container-buttom">
-                            <button type="submit" class="logout-button">Logout</button>
+                            <!-- botao para logout -->
+                            <a class="logout-button" href="{% url 'logout' %}">Logout</a>
                         </div>
                     </li>
                     {% endif %}

@@ -29,6 +29,6 @@
   <button type="submit" class="btn btn-primary">Login</button>
 </form>
 {% else %}
-  <p>Você já está logado como {{ user }}, <a href='{% url 'logout' %}'>clique aqui</a> para sair.</p>
+  <p align='center'>Você já está logado como {{ user }}, <a href='{% url 'logout' %}'>clique aqui</a> para sair.</p>
 {% endif %}
 {% endblock conteudo %}

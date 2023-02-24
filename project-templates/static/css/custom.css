@@ -1,7 +1,7 @@
 .container-buttom {
     display: flex;
     justify-content: flex-end;
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .logout-button {
@@ -15,7 +15,7 @@
     transition: all 0.15s ease-in-out;
     font-weight: bold;
     text-decoration: none;
-    margin-top: 3%;
+    /* margin-top: 3%; */
     text-align: center;
 }
 

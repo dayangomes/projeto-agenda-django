@@ -10,9 +10,11 @@
 
 {% block conteudo %}
 
-<h1 class='mt-3 mb-3'>Olá, {{ user.first_name }} {{ user.last_name }}</h1>
-
-<p>Você já está logado como {{ user }}, <a href='{% url 'logout' %}'>clique aqui</a> para logout.</p>
+<center>
+    <h1 class='mt-3 mb-3'>Olá, {{ user.first_name }} {{ user.last_name }}</h1>
+    <p>Você já está logado como {{ user }}, <a href='{% url 'logout' %}'>clique aqui</a> para logout.</p>
+    <br>
+</center>
 
 {% include 'partial/_messages.html'%}
 <div class="container">
