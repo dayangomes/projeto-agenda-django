@@ -1,7 +1,7 @@
 # Projeto de uma Agenda em Django
 
 
-[Link de Acesso ao site por IP](34.95.227.152). (Não tenho um domínio ainda)
+[Link de Acesso ao site por IP](http://34.95.227.152/). (Não tenho um domínio ainda)
 
 ## Aprendizados
 
