@@ -1,6 +1,22 @@
-# projeto-agenda-django
+# Projeto de uma Agenda em Django
 
-Link de Acesso ao site: 34.95.227.152
+
+[Link de Acesso ao site por IP](34.95.227.152). (Não tenho um domínio ainda)
+
+## Aprendizados
+
+Na construção desse projeto, aprendi várias coisas novas e me familiarizei com várias funcionalidades do framework Django, algumas delas são:
+- Pesonalização da área Admin do Django;
+- Levantamento de erros 404;
+- Paginação;
+- Alertas com o Django Messages;
+- Campo de pesquisa e campo de imagem; 
+- Modelo MVT(Model, View, Templates) do Django;
+- Modelo ORM(Object Relational Mapping);
+- Sistema de Login, Cadastro e Logout;
+- Páginas semifechadas verificando usuários logados;
+- Formularios para Models;
+- Deploy do projeto na Google Cloud Plataform;
 
 ## Instalação
 
