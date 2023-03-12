@@ -1,5 +1,7 @@
 # projeto-agenda-django
 
+Link de Acesso ao site: 34.95.227.152
+
 ## Instalação
 
 Crie inicialmente um ambiente virtual python na pasta do projeto e ative-o:
