@@ -1,8 +1,5 @@
 # Projeto de uma Agenda em Django
 
-
-[Link de Acesso ao site por IP](http://34.95.227.152/). (Não tenho um domínio ainda)
-
 ## Aprendizados
 
 Na construção desse projeto, aprendi várias coisas novas e me familiarizei com várias funcionalidades do framework Django, algumas delas são:
