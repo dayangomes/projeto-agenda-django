@@ -5,15 +5,14 @@
 Na construção desse projeto, aprendi várias coisas novas e me familiarizei com várias funcionalidades do framework Django, algumas delas são:
 - Pesonalização da área Admin do Django;
 - Levantamento de erros 404;
-- Paginação;
 - Alertas com o Django Messages;
-- Campo de pesquisa e campo de imagem; 
+- Campo de pesquisa, paginação configuração de arquivos estáticos (CSS, JS e imagens) para personalização do layout da agenda;
 - Modelo MVT(Model, View, Templates) do Django;
 - Modelo ORM(Object Relational Mapping);
-- Sistema de Login, Cadastro e Logout;
+- Utilização do sistema de autenticação do Django para controle de acesso de usuários
 - Páginas semifechadas verificando usuários logados;
-- Formularios para Models;
-- Deploy do projeto na Google Cloud Plataform;
+- Utilização do sistema de formulários do Django para entrada e validação de dados;
+- Configuração de ambiente de produção (Nginx, uso de banco de dados em produção, configuração de variáveis de ambiente, etc);
 
 ## Instalação
 
